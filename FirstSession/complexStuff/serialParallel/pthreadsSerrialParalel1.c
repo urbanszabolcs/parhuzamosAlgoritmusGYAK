@@ -65,7 +65,7 @@ void *find_primes(void *arg)
 }
 int main()
 {
-    int maxNUM = 5000000;
+    int maxNUM = 1000;
     pthread_t threads[THREADS];
     SharedData sharedata;
 
