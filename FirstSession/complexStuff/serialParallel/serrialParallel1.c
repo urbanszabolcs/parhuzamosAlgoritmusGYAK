@@ -4,14 +4,18 @@
 #include <math.h>
 #include <time.h>
 
-#define ARRAY_SIZE 10000000
+#define ARRAY_SIZE 50000000
+
 
 int main()
 {
-    double *data = (double *)malloc(ARRAY_SIZE * sizeof(int));
-    double *result_serial = (double *)malloc(ARRAY_SIZE * sizeof(int));
-    double *result_parallel = (double *)malloc(ARRAY_SIZE * sizeof(int));
-
+    double *data = (double *)malloc(ARRAY_SIZE * sizeof(double));
+    double *result_serial = (double *)malloc(ARRAY_SIZE * sizeof(double));
+    double *result_parallel = (double *)malloc(ARRAY_SIZE * sizeof(double));
+    if(data == NULL || result_serial == NULL ||result_parallel == NULL){
+        printf("MEMORY ERROR LUL!!!!!\n");
+        return 1;
+    }
     srand(time(NULL));
     for (int i = 0; i < ARRAY_SIZE; i++)
     {
@@ -36,11 +40,11 @@ int main()
     }
     double end_parallel = omp_get_wtime();
 
-    printf("Soros futtatas ideje mp-ben: %f", (end_serial - start_serial));
-    printf("Parhuzamos futtatas ideje mp-ben: %f", (end_parallel - start_parallel));
+    printf("Soros futtatas ideje mp-ben: %f\n", (end_serial - start_serial));
+    printf("Parhuzamos futtatas ideje mp-ben: %f\n", (end_parallel - start_parallel));
 
     ///////////
-    printf("Gyorsulas (speedup) %f", (end_serial - start_serial) / (end_parallel - start_parallel));
+    printf("Gyorsulas (speedup) %f\n", (end_serial - start_serial) / (end_parallel - start_parallel));
 
     free(data);
     free(result_serial);
