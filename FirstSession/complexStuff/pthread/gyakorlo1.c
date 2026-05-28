@@ -5,7 +5,7 @@
 #include <omp.h>
 #include <pthread.h>
 
-#define THREADS_NUMBER 8    //Otthon kiprobalni magasabb szallon :3
+#define THREADS_NUMBER 12    //Otthon kiprobalni magasabb szallon :3
 #define CHUNK_ROWS 50
 
 typedef struct
